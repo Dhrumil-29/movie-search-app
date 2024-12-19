@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectDictionaryState">
-    <dictionary name="dhrum" />
-  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -17,4 +14,5 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectRootManager" version="2" default="true" />
 </project>

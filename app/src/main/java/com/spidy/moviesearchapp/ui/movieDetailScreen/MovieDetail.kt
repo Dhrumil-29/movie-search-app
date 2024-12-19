@@ -2,17 +2,16 @@ package com.spidy.moviesearchapp.ui.movieDetailScreen
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.spidy.moviesearchapp.MovieViewModel
-import com.spidy.moviesearchapp.MovieViewModelProvider
 import com.spidy.moviesearchapp.R
-import com.spidy.moviesearchapp.data.MovieRepository
-import com.spidy.moviesearchapp.data.RetrofitClient
 import com.spidy.moviesearchapp.databinding.ActivityMovieDetailBinding
 import com.spidy.moviesearchapp.model.MovieDetailResponse
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetail : AppCompatActivity() {
 
     private var movieId: String = ""
@@ -23,11 +22,12 @@ class MovieDetail : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailBinding
 
-    private val apiService = RetrofitClient.apiService
-    private val repository = MovieRepository(apiService)
-    private val viewModel by lazy {
-        ViewModelProvider(this, MovieViewModelProvider(repository))[MovieViewModel::class.java]
-    }
+//    private val apiService = RetrofitClient.apiService
+//    private val repository = MovieRepository(apiService)
+//    private val viewModel by lazy {
+//        ViewModelProvider(this, MovieViewModelProvider(repository))[MovieViewModel::class.java]
+//    }
+    private val viewModel:MovieViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

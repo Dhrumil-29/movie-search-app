@@ -5,27 +5,20 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.spidy.moviesearchapp.MovieViewModel
-import com.spidy.moviesearchapp.MovieViewModelProvider
-import com.spidy.moviesearchapp.data.MovieRepository
-import com.spidy.moviesearchapp.data.RetrofitClient
 import com.spidy.moviesearchapp.databinding.ActivityMainBinding
 import com.spidy.moviesearchapp.ui.movieDetailScreen.MovieDetail
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val apiService by lazy { RetrofitClient.apiService }
-    private val repository by lazy { MovieRepository(apiService) }
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            MovieViewModelProvider(repository)
-        )[MovieViewModel::class.java]
-    }
+
+    private val viewModel:MovieViewModel by viewModels()
     private lateinit var layoutManager: LinearLayoutManager
 
     private lateinit var movieAdapter: MovieAdapter

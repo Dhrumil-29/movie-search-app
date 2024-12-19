@@ -9,14 +9,17 @@ import com.spidy.moviesearchapp.data.ApiResponse
 import com.spidy.moviesearchapp.data.MovieRepository
 import com.spidy.moviesearchapp.ui.mainScreen.UiState
 import com.spidy.moviesearchapp.ui.movieDetailScreen.MovieDetailUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.math.ceil
 
 
-class MovieViewModel(private val movieRepository: MovieRepository) : ViewModel() {
+@HiltViewModel
+class MovieViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
 
     private var _searchState = MutableLiveData<UiState>(UiState())
     val searchState: LiveData<UiState> = _searchState

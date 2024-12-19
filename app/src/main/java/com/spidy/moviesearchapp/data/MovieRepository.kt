@@ -8,8 +8,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import okio.IOException
+import javax.inject.Inject
 
-class MovieRepository(private val apiService: ApiService) {
+class MovieRepository @Inject constructor(private val apiService: ApiService) {
     fun getSearchMovies(s: String, page: Int): Flow<ApiResponse<SearchMovieResponse>> = flow {
         emit(ApiResponse.Loading())
         try {
